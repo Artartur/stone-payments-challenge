@@ -1,0 +1,47 @@
+.header-container {
+  align-items: center;
+  display: flex;
+  height: 81px;
+  margin: 64px;
+  width: 538px;
+
+  &-content {
+    display: flex;
+
+    img {
+      margin-right: 8%;
+    }
+
+    &-date {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 538px;
+
+      span {
+        display: flex;
+        width: 100%;
+
+        p {
+          color: #45505e;
+          font-size: 18px;
+          font-weight: 500;
+
+          &:first-child {
+            margin-right: 10px;
+          }
+
+          &:last-child {
+            margin-left: 10px;
+          }
+        }
+      }
+
+      & > p {
+        color: #8c9cad;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+}
