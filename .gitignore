@@ -6,6 +6,9 @@
 /out-tsc
 /bazel-out
 
+.gitignore
+package-lock.json
+.angular/
 # Node
 /node_modules
 npm-debug.log
