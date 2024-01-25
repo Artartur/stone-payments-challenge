@@ -4,11 +4,11 @@
       <div>
         <div>
           <label for="dollar">Dolar</label>
-          <input type="text" name="dollar" id="dollar" />
+          <input type="number" name="dollar" id="dollar" placeholder="$ 0.00" [(ngModel)]="inputDollar"/>
         </div>
         <div>
           <label for="tax">Taxa do Estado</label>
-          <input type="text" name="tax" id="tax" />
+          <input type="number" name="tax" id="tax" placeholder="0%" [(ngModel)]="inputTax"/>
         </div>
       </div>
     </div>
@@ -16,19 +16,32 @@
       <p>Tipo de compra</p>
       <div>
         <div>
-          <input type="radio" name="money" id="money"/>
+          <input
+            type="radio"
+            name="money"
+            id="money"
+            value="money"
+            [(ngModel)]="option"
+          />
           <label for="money">Dinheiro</label>
         </div>
         <div>
-          <input type="radio" name="card" id="card"/>
+          <input
+            type="radio"
+            name="card"
+            id="card"
+            value="card"
+            [(ngModel)]="option"
+          />
           <label for="card">Cartao</label>
         </div>
       </div>
     </div>
     <div class="main-container-forms-buttons">
-      <button type="button">
+      <button type="button" [disabled]="!option" (click)="getDollarValue()">
         <img src="../../assets/transfer.svg" alt="converter" /> Converter
       </button>
     </div>
+    <p [innerHTML]="getDollarValue()"></p>
   </form>
 </main>

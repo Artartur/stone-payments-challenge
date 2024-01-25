@@ -13,7 +13,6 @@
     &-buttons {
       button {
         align-items: center;
-        background-color: #8c9cad;
         border: solid 1px #008b57;
         border-radius: 8px;
         color: white;
@@ -22,6 +21,18 @@
         height: 56px;
         justify-content: center;
         width: 149px;
+
+        &:disabled {
+          background-color: #8c9cad;
+        }
+
+        &:enabled {
+          background-color: #00ab63;
+
+          &:hover {
+            background-color: #008b57;
+          }
+        }
 
         img {
           margin-right: 10px;
@@ -42,7 +53,7 @@
             border-radius: 4px;
             box-shadow: 0 8px 4px #0d111b14;
             height: 56px;
-            outline:none;
+            outline: none;
             padding: 0 10px;
             width: 168px;
           }
