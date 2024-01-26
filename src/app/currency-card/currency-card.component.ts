@@ -7,13 +7,14 @@ import { ApiService } from '../../services/api.service';
   styleUrl: './currency-card.component.scss',
 })
 export class CurrencyCardComponent implements OnInit {
-  inputDollar: number;
-  inputTax: number;
-  iof: number = 0.011;
-  option: string = '';
   data: any = {};
   dollarValue: number;
-
+  inputDollarValue: number;
+  inputTaxValue: number;
+  iof: number = 0.011;
+  option: string = '';
+  shouldCalculateTotal: boolean = false;
+  total: string = '';
   ngOnInit(): void {
     this.getDollarValue();
   }
@@ -22,24 +23,34 @@ export class CurrencyCardComponent implements OnInit {
 
   calculate(dollarValue: number) {
     const dollarConvertedToNumber = Number(dollarValue);
-    const dollarPercent = (this.inputTax / 100) * this.inputDollar;
-    const taxedDollarCard = (
+
+    const dollarPercent = (this.inputTaxValue / 100) * this.inputDollarValue;
+
+    const taxedDollar = (
       dollarConvertedToNumber +
       this.iof * dollarConvertedToNumber
     ).toFixed(2);
 
     if (this.option === 'money') {
-      return console.log(
-        Number(
-          (this.inputDollar + dollarPercent) * Number(taxedDollarCard)
-        ).toFixed(2)
-      );
+      this.shouldCalculateTotal = !this.shouldCalculateTotal;
+      return (this.total = Number(
+        (this.inputDollarValue + dollarPercent) * Number(taxedDollar)
+      ).toFixed(2));
     }
+
+    if (this.option === 'card') {
+    }
+
+    return this.total;
   }
 
   getDollarValue() {
-    this.apiService.getData().subscribe((data) => {
-      return console.log(this.calculate(data?.USDBRL?.high));
-    });
+    this.apiService
+      .getData()
+      .subscribe((data) => this.calculate(data?.USDBRL?.high));
+  }
+
+  getTotal() {
+    return this.total;
   }
 }

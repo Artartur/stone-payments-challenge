@@ -4,11 +4,23 @@
       <div>
         <div>
           <label for="dollar">Dolar</label>
-          <input type="number" name="dollar" id="dollar" placeholder="$ 0.00" [(ngModel)]="inputDollar"/>
+          <input
+            type="number"
+            name="dollar"
+            id="dollar"
+            placeholder="$ 0.00"
+            [(ngModel)]="inputDollarValue"
+          />
         </div>
         <div>
           <label for="tax">Taxa do Estado</label>
-          <input type="number" name="tax" id="tax" placeholder="0%" [(ngModel)]="inputTax"/>
+          <input
+            type="number"
+            name="tax"
+            id="tax"
+            placeholder="0%"
+            [(ngModel)]="inputTaxValue"
+          />
         </div>
       </div>
     </div>
@@ -42,6 +54,6 @@
         <img src="../../assets/transfer.svg" alt="converter" /> Converter
       </button>
     </div>
-    <p [innerHTML]="getDollarValue()"></p>
+    <p *ngIf="shouldCalculateTotal" >{{getTotal()}}</p>
   </form>
 </main>
