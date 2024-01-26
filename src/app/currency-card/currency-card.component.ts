@@ -12,6 +12,7 @@ export class CurrencyCardComponent implements OnInit {
   inputDollarValue: number;
   inputTaxValue: number;
   iof: number = 0.011;
+  iofCard: number = 0.064;
   option: string = '';
   shouldCalculateTotal: boolean = false;
   total: string = '';
@@ -26,19 +27,28 @@ export class CurrencyCardComponent implements OnInit {
 
     const dollarPercent = (this.inputTaxValue / 100) * this.inputDollarValue;
 
-    const taxedDollar = (
+    const taxedDollarMoney = (
       dollarConvertedToNumber +
       this.iof * dollarConvertedToNumber
+    ).toFixed(2);
+
+    const taxedDollarCard = (
+      dollarConvertedToNumber +
+      this.iofCard * dollarConvertedToNumber
     ).toFixed(2);
 
     if (this.option === 'money') {
       this.shouldCalculateTotal = !this.shouldCalculateTotal;
       return (this.total = Number(
-        (this.inputDollarValue + dollarPercent) * Number(taxedDollar)
+        (this.inputDollarValue + dollarPercent) * Number(taxedDollarMoney)
       ).toFixed(2));
     }
 
     if (this.option === 'card') {
+      this.shouldCalculateTotal = !this.shouldCalculateTotal;
+      return (this.total = Number(
+        (this.inputDollarValue + dollarPercent) * Number(taxedDollarCard)
+      ).toFixed(2));
     }
 
     return this.total;
