@@ -7,12 +7,14 @@ import { HeaderComponent } from './header/header.component';
 import { CurrencyCardComponent } from './currency-card/currency-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormResultComponent } from './form-result/form-result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CurrencyCardComponent
+    CurrencyCardComponent,
+    FormResultComponent
   ],
   imports: [
     BrowserModule,

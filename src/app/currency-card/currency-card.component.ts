@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-currency-card',
@@ -11,56 +12,39 @@ export class CurrencyCardComponent implements OnInit {
   dollarValue: number;
   inputDollarValue: number;
   inputTaxValue: number;
-  iof: number = 0.011;
-  iofCard: number = 0.064;
   option: string = '';
-  shouldCalculateTotal: boolean = false;
-  total: string = '';
-  ngOnInit(): void {
-    this.getDollarValue();
+  taxedDollar: number;
+  total: number = 0;
+
+  ngOnInit(): void {}
+
+  constructor(private apiService: ApiService, private router: Router) {}
+  calculate() {
+    this.apiService.getData().subscribe((data) => {
+      const dollarConvertedToNumber = Number(data?.USDBRL?.high);
+      const dollarPercent = (this.inputTaxValue / 100) * this.inputDollarValue;
+
+      if (this.option === 'money') {
+        this.taxedDollar =
+          dollarConvertedToNumber + 0.011 * dollarConvertedToNumber;
+      } else if (this.option === 'card') {
+        this.taxedDollar =
+          dollarConvertedToNumber + 0.064 * dollarConvertedToNumber;
+      }
+
+      this.total = (this.inputDollarValue + dollarPercent) * this.taxedDollar;
+      this.dollarValue = Number(dollarConvertedToNumber.toFixed(2));
+      this.navigateToResult();
+    });
   }
 
-  constructor(private apiService: ApiService) {}
-
-  calculate(dollarValue: number) {
-    const dollarConvertedToNumber = Number(dollarValue);
-
-    const dollarPercent = (this.inputTaxValue / 100) * this.inputDollarValue;
-
-    const taxedDollarMoney = (
-      dollarConvertedToNumber +
-      this.iof * dollarConvertedToNumber
-    ).toFixed(2);
-
-    const taxedDollarCard = (
-      dollarConvertedToNumber +
-      this.iofCard * dollarConvertedToNumber
-    ).toFixed(2);
-
-    if (this.option === 'money') {
-      this.shouldCalculateTotal = !this.shouldCalculateTotal;
-      return (this.total = Number(
-        (this.inputDollarValue + dollarPercent) * Number(taxedDollarMoney)
-      ).toFixed(2));
-    }
-
-    if (this.option === 'card') {
-      this.shouldCalculateTotal = !this.shouldCalculateTotal;
-      return (this.total = Number(
-        (this.inputDollarValue + dollarPercent) * Number(taxedDollarCard)
-      ).toFixed(2));
-    }
-
-    return this.total;
-  }
-
-  getDollarValue() {
-    this.apiService
-      .getData()
-      .subscribe((data) => this.calculate(data?.USDBRL?.high));
-  }
-
-  getTotal() {
-    return this.total;
+  navigateToResult() {
+    this.router.navigate(['/result'], {
+      queryParams: {
+        dollar: this.dollarValue,
+        tax: this.inputTaxValue,
+        total: this.total.toFixed(2),
+      },
+    });
   }
 }

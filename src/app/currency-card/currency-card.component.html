@@ -45,15 +45,14 @@
             value="card"
             [(ngModel)]="option"
           />
-          <label for="card">Cartao</label>
+          <label for="card">Cartão</label>
         </div>
       </div>
     </div>
     <div class="main-container-forms-buttons">
-      <button type="button" [disabled]="!option" (click)="getDollarValue()">
-        <img src="../../assets/transfer.svg" alt="converter" /> Converter
-      </button>
+        <button routerLink="/result" type="button" [disabled]="!option" (click)="calculate();  navigateToResult();">
+          <img src="../../assets/transfer.svg" alt="converter" /> Converter
+        </button>
     </div>
-    <p *ngIf="shouldCalculateTotal" >{{getTotal()}}</p>
   </form>
 </main>
