@@ -50,9 +50,14 @@
       </div>
     </div>
     <div class="main-container-forms-buttons">
-        <button routerLink="/result" type="button" [disabled]="!option" (click)="calculate();  navigateToResult();">
-          <img src="../../assets/transfer.svg" alt="converter" /> Converter
-        </button>
+      <button
+        routerLink="/result"
+        type="button"
+        [disabled]="!option || !inputTaxValue || !inputDollarValue"
+        (click)="calculate(); navigateToResult()"
+      >
+        <img src="../../assets/transfer.svg" alt="converter" /> Converter
+      </button>
     </div>
   </form>
 </main>
