@@ -45,3 +45,51 @@
     }
   }
 }
+
+@media (max-width: 1200px) {
+  .header-container {
+    height: 60px;
+    margin: 32px 32px 15px 40px;
+
+    &-content {
+      &-date {
+        span {
+          p {
+            font-size: 16px;
+          }
+        }
+        & > p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .header-container {
+    height: 40px;
+    margin: 28px 28px 15px 15px;
+
+    &-content {
+      img {
+        margin-right: 5%;
+        width: 100px;
+      }
+
+      &-date {
+        span {
+          font-size: 14px;
+
+          p {
+            font-size: 14px;
+          }
+        }
+
+        & > p {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

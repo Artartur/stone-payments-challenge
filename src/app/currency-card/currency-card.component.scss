@@ -82,7 +82,7 @@
         align-items: center;
         display: flex;
         input {
-          accent-color: #008B57;
+          accent-color: #008b57;
           height: 24px;
           margin-right: 5px;
           width: 24px;
@@ -97,6 +97,92 @@
         font-size: 18px;
         font-weight: bold;
         margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .main-container {
+    margin: 0 40px;
+
+    &-forms {
+      margin-top: 10%;
+
+      &-buttons {
+        button {
+          height: 50px;
+          width: 140px;
+        }
+
+        img {
+          width: 25px;
+        }
+      }
+
+      &-inputs {
+        div {
+          div {
+            input {
+              height: 50px;
+              width: 140px;
+            }
+
+            label {
+              font-size: 17px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .main-container {
+    margin: 0 15px;
+
+    &-forms {
+      margin-top: 0;
+
+      &-buttons {
+        button {
+          font-size: 14px;
+          height: 40px;
+          width: 120px;
+        }
+        img {
+          width: 20px;
+        }
+      }
+      &-inputs {
+        div {
+          div {
+            input {
+              height: 40px;
+              width: 120px;
+            }
+
+            label {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+
+      &-options {
+        div {
+          input {
+            height: 20px;
+            width: 20px;
+          }
+          label {
+            font-size: 14px;
+          }
+        }
+        p {
+          font-size: 16px;
+        }
       }
     }
   }

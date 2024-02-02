@@ -24,7 +24,7 @@
       margin: 10% 0 15% 0;
       width: 120px;
 
-      &:hover{
+      &:hover {
         background-color: rgb(247, 247, 247);
       }
     }
@@ -49,6 +49,30 @@
         color: #45505e;
         font-size: 20px;
         margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .result-container {
+    margin: 0 32px;
+
+    &-button {
+      button {
+        margin: 15% 0 10% 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .result-container {
+    margin: 0 15px;
+
+    &-texts {
+      h1 {
+        font-size: 60px;
       }
     }
   }

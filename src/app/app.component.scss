@@ -4,3 +4,16 @@ div {
   position: absolute;
   width: 100vw;
 }
+
+@media (max-width: 1200px) {
+  div{
+    background: url("../assets/background.png") right bottom / 100% 100% no-repeat;
+  }
+}
+
+@media (max-width: 750px) {
+  div{
+    background: url("../assets/background.png") right bottom / 95% 100% no-repeat;
+    overflow: hidden;
+  }
+}
