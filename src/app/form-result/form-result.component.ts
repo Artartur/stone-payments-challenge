@@ -8,6 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormResultComponent implements OnInit {
   dollar: string;
+  iof: string;
+  option: string;
   tax: string;
   totalValue: string;
   constructor(private route: ActivatedRoute) {}
@@ -15,6 +17,8 @@ export class FormResultComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       this.dollar = params['dollar'];
+      this.iof = params['iof'];
+      this.option = params['option'];
       this.tax = params['tax'];
       this.totalValue = params['total'];
     });

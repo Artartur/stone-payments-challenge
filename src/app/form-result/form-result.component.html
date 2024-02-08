@@ -7,8 +7,11 @@
   </div>
   <div class="result-container-texts">
     <p>O resultado do calculo é</p>
-    <h1>R$ {{ totalValue ? totalValue : "0.00" }}</h1>
-    <p>Compra no dinheiro e taxa de {{ tax ? tax : "0.00" }}%</p>
-    <p>Cotação do dólar: $1,00 = R$ {{ dollar ? dollar : "0.00" }}</p>
+    <h1>{{ totalValue ? totalValue : "R$ 0,00" }}</h1>
+    <p>
+      Compra no {{ option }} e taxa de {{ tax ? tax : "0" }}% + IOF de
+      {{ iof ? iof : "0" }}%
+    </p>
+    <p>Cotação do dólar: $1,00 = {{ dollar ? dollar : "R$ 0,00" }}</p>
   </div>
 </div>
